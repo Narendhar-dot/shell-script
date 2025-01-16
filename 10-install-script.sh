@@ -2,25 +2,18 @@
 USERID=$(id -u)
 if [$USERID -ne 0]
 then 
-    echo "You must have sudo access to install MYSQL"
-    exit 1 #other than 0
+    echo "ERROR: YOU DO NOT HAVE THE PERMISSION TO INSTALL MYSQL. YOU NEED SUDO ACCESS"
 fi
-
-dnf install mysql -y
-
+dnf list installed mysql
 if [$? -ne 0]
-then 
-    echo "Installing mysql....FAILURE"
-    exit 1
+    then
+        dnf install mysql -y
+    if[$? -ne 0]
+    then
+        echo "Installation of mysql...FAILURE"
+    else
+        echo "Installation of mysql...SUCCESS"
 else
-    echo "Installing MYSQL...SUCCESSED"
+    echo "MYSQL INSTALLED"
 fi
 
-dnf install git -y
-
-if [$? -ne 0]
-then 
-    echo "Installing git...Failed"
-else
-    echo "Installing git...successed"
-fi
