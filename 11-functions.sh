@@ -9,7 +9,7 @@ VALIDATE(){
         echo "$2...success"
     fi
 }
-if [$USERID -ne 0]
+if [ $USERID -ne 0 ]
 then
     echo "ERROR: YOU NEED TO LOGIN WITH SUDO"
     exit 1
