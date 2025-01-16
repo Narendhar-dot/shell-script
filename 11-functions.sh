@@ -15,19 +15,4 @@ then
     exit 1
 fi
 dnf list installed mysql
-    if [$1 -ne 0]
-    then 
-        dnf install mysql -y
-        VALIDATE $? "Installing MYSQL"
-    fi
-else
-    echo "Mysql is installed already"
-fi
-dnf list installed git 
-    if [$1 -ne 0]
-    then 
-        dnf install git -y
-        VALIDATE $? "Installing Git"
-    fi
-else
-    echo "Git is installed already"
+    
