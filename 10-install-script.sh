@@ -19,10 +19,10 @@ else
     echo "MYSQL Installed already!!!!"
 fi
 dnf list installed git
-if [$? -ne 0]
+if [ $? -ne 0 ]
 then   
     dnf install git -y
-    if [$? -ne 0]
+    if [ $? -ne 0 ]
     then 
         echo "Installation of git...Failure"
     else
