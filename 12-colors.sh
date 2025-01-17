@@ -1,7 +1,7 @@
 #!/bin/bash
-R="[\e 31m"
-G="[\e 32m"
-Y="[\e 33m"
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
 USERID=$(id -u)
 VALIDATE(){
     if [$1 -ne 0]
