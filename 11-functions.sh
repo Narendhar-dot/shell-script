@@ -16,9 +16,17 @@ then
 fi
 dnf list installed mysql
 if [$? -ne 0]
-then 
+then    
     dnf install mysql -y
     VALIDATE $? "Installing mysql"
 else 
     echo "Installed myql"
 fi
+dnf list installed git -y
+if [$? -ne 0]
+then 
+    dnf install git -y
+    VALIDATE $? "Installing Git"
+else
+    echo "Git installed already "
+fi 
