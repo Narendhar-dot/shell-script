@@ -5,5 +5,5 @@ echo 4
 echo 5
 for i in {0..1000}
 do 
-    echo $i
+    echo $i/3
 done
