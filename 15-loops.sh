@@ -4,10 +4,10 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+LOGS_FOLDER="/var/log/shell-script-logs"
 LOG_FILE=$(echo $0 | cut -d '.' -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
-LOGS_FOLDER="/var/log/shell-script-logs"
 
 USERID=$(id -u)
 
@@ -20,6 +20,14 @@ VALIDATE(){
         echo -e "$2... $G success"
     fi
 }
+CHECK_ROOT(){
+    if [ $USERID -ne 0 ]
+    then 
+        echo -e $R "ERROR:: You must have sudo access to execute the script" $N
+        exit 1
+    fi
+}
+
 echo "script started executing at :$TIMESTAMP" &>>$LOG_FILE_NAME
 if [ $USERID -ne 0 ]
 then
